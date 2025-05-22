@@ -1,8 +1,8 @@
-import React from 'react'
 import ReactModal from 'react-modal'
 import { useEffect, useState } from 'react'
+import { ImageModalProps } from '../../App.types'
 
-const ImageModal = ({ item, onCloseModal }) => {
+const ImageModal = ({ photo, onCloseModal }: ImageModalProps) => {
     const [isOpen, setIsOpen] = useState(false);
     useEffect(() => setIsOpen(true), []);
 
@@ -33,7 +33,7 @@ const ImageModal = ({ item, onCloseModal }) => {
                 style={style}
               >
               <div>
-                    <img src={item.urls.regular} alt={item.slug} width="800" height="600" />
+                    <img src={photo.urls.regular} alt={photo.slug} width="800" height="600" />
               </div>
         </ReactModal>
       </>

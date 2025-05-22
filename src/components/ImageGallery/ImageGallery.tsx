@@ -1,16 +1,15 @@
-import React from 'react'
-
 import ImageCard from '../ImageCard/ImageCard'
 import css from './ImageGallery.module.css'
+import { ImageGalleryProps } from '../../App.types'
 
-const ImageGallery = ({items, onOpenModal}) => {
+const ImageGallery = ({ photos, onOpenModal }: ImageGalleryProps) => {
   return (
       <>
           <ul className={css.list}>
-              {items.map((item) => {
+              {photos.map((photo) => {
                   return (
-                      <li key={item.id}>
-                            <ImageCard item={item} onOpenModal={onOpenModal} />
+                      <li key={photo.id}>
+                            <ImageCard photo={photo} onOpenModal={onOpenModal} />
                       </li>
                         )
                     }
