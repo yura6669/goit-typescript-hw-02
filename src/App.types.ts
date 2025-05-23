@@ -3,6 +3,11 @@ export type GalleryParams = {
     page: number;
 };
 
+export type GalleryResponse = {
+    results: Photo[];
+    total_pages: number;
+}
+
 export type Photo = {
     id: string;
     slug: string;
@@ -39,15 +44,4 @@ export type ErrorMessageProps = {
 export type ImageModalProps = {
     photo: Photo;
     onCloseModal: () => void;
-}
-
-export function convertToPhoto(data: any): Photo {
-    return {
-        id: data.id,
-        slug: data.slug,
-        urls: {
-            small: data.urls.small,
-            regular: data.urls.regular,
-        },
-    };
 }

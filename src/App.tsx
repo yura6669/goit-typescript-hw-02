@@ -8,7 +8,7 @@ import axios from "axios";
 import { useState, useEffect } from 'react';
 import { getGallery } from './core/gallery';
 import ImageModal from "./components/ImageModal/ImageModal";
-import {GalleryParams, Photo, convertToPhoto } from "./App.types";
+import {GalleryParams, Photo, GalleryResponse } from "./App.types";
 
 function App() {
 
@@ -33,11 +33,10 @@ function App() {
       page: page,
     };
     const url = getGallery(galleryParams);
-    axios.get(url)
+    axios.get<GalleryResponse>(url)
       .then(response => {
         const { results, total_pages } = response.data;
-        const photos = results.map((item: any) => convertToPhoto(item));
-        setPhotos(prevItems => [...prevItems, ...photos]);
+        setPhotos(prevItems => [...prevItems, ...results]);
         setTotalPages(total_pages);
       })
       .catch(() => {
